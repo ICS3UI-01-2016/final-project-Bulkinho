@@ -46,7 +46,7 @@ public class PokemonGaem extends JComponent {
     boolean right = false;
     boolean space = false;
     //background of game
-    BufferedImage pokebackground = loadImage("route.png");
+    BufferedImage pokeBackground = loadImage("route.png");
     //enemy 
     BufferedImage rattata = loadImage("bad.png");
 
@@ -60,10 +60,11 @@ public class PokemonGaem extends JComponent {
 
 
         // GAME DRAWING GOES HERE 
-        g.drawImage(pokebackground, 0, 0, WIDTH, HEIGHT, null);
-
         g.setColor(Color.white);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(pokeBackground, 0, 0, WIDTH, HEIGHT, null);
+
+        
+        
 
 
 
