@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -27,6 +26,8 @@ public class PokemonGaem extends JComponent {
     long desiredFPS = 60;
     long desiredTime = (1000) / desiredFPS;
     //game variables
+    //player
+    Rectangle user = new Rectangle(100, 200, 50, 50);
     //scoreboard and lives alotted
     int score = 0;
     Font scoreFont = new Font("Arial", Font.BOLD, 42);
@@ -46,10 +47,14 @@ public class PokemonGaem extends JComponent {
     boolean left = false;
     boolean right = false;
     boolean space = false;
-    //background of game
+    //background of game anim
     BufferedImage pokeBackground = loadImage("route.png");
-    //enemy 
+    //enemy anim
     BufferedImage rattata = loadImage("bad.png");
+    //pokeballs anim 
+    BufferedImage pokeball = loadImage("pokeball.png");
+    //player anim
+    BufferedImage player = loadImage("pokeplayers.png");
     
     
 
@@ -63,8 +68,9 @@ public class PokemonGaem extends JComponent {
 
 
         // GAME DRAWING GOES HERE 
-        g.setColor(Color.white);
         g.drawImage(pokeBackground, 0, 0, WIDTH, HEIGHT, null);
+        //player anim 
+        g.drawImage(player, player.getWidth(), player.getHeight(), null);
 
         
         
@@ -110,8 +116,6 @@ public class PokemonGaem extends JComponent {
 
             // all your game rules and move is done in here
             // GAME LOGIC STARTS HERE 
-            int x = 0;
-            int y = 0;
             
             //method to take away player lives when enemy passes them
             for (int i = 0; i < ratX.length; i ++)
@@ -129,8 +133,31 @@ public class PokemonGaem extends JComponent {
             {
             if(left)
             {
-                
+              //x direction speed
+                x = x - speed;  
             }
+            //ensure player doesnt veer off the screen x 
+            if(x < 0)
+            {
+                x = 0;
+            }
+            if( x + 90 > WIDTH)
+            {
+                //ensure player doesnt veer off the screen y 
+                if(y < 0)
+                {
+            if (y + 40 > HEIGHT)
+            {
+                y = HEIGHT - 40;
+            }
+                }
+                //enemy rats coming toward player
+                
+                int y = 10;
+                
+                for (int i = 0; i < )
+                
+                
             
             
 
@@ -162,7 +189,7 @@ public class PokemonGaem extends JComponent {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // creates a windows to show my game
+        //creates a windows to show my game
         JFrame frame = new JFrame("My Game");
 
         // creates an instance of my game
