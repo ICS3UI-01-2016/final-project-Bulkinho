@@ -29,6 +29,7 @@ public class PokemonGaem extends JComponent {
     //game variables
     //scoreboard and lives alotted
     int score = 0;
+    Font scoreFont = new Font("Arial", Font.BOLD, 42);
     //subject to change
     int lives = 10;
     //pokeballs (weapons)
@@ -49,6 +50,8 @@ public class PokemonGaem extends JComponent {
     BufferedImage pokeBackground = loadImage("route.png");
     //enemy 
     BufferedImage rattata = loadImage("bad.png");
+    
+    
 
     // drawing of the game happens in here
     // we use the Graphics object, g, to perform the drawing
@@ -109,6 +112,27 @@ public class PokemonGaem extends JComponent {
             // GAME LOGIC STARTS HERE 
             int x = 0;
             int y = 0;
+            
+            //method to take away player lives when enemy passes them
+            for (int i = 0; i < ratX.length; i ++)
+                if(ratY[i] == y + 100 && ratX[i] < 1000)
+                {
+                    lives--;
+                }
+            //if player has 0 lives then game over
+            if(lives == 0);
+            {
+                //game displayed to player
+                System.out.println("GAME OVER");
+            }
+            //movement of player directional
+            {
+            if(left)
+            {
+                
+            }
+            
+            
 
 
             // GAME LOGIC ENDS HERE 
@@ -147,6 +171,7 @@ public class PokemonGaem extends JComponent {
         game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         // adds the game to the window
         frame.add(game);
+        
 
         // sets some options and size of the window automatically
         frame.setResizable(false);
@@ -157,5 +182,56 @@ public class PokemonGaem extends JComponent {
 
         // starts my game loop
         game.Pokemon();
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+//fire the pokeball with space bar
+@Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_SPACE) {
+            space = true;
+        }
+    }
+//stops firing once key is released
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_SPACE) {
+            space = false;
+        }
+    }
+    //player go left
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_LEFT) {
+            left = true;
+        }
+    }
+    //stop going left
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_LEFT) {
+            left = false;
+        }
+    }
+    //player go right
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_RIGHT) {
+            right = true;
+        }
+    }
+    //stop going right
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_RIGHT) {
+            right = false;
+        }
     }
 }
