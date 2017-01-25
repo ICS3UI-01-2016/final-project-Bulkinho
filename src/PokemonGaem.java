@@ -85,10 +85,10 @@ public class PokemonGaem extends JComponent {
     }
     //way to load in images
 
-    public BufferedImage loadImage(String filename) {
+    public BufferedImage loadImage(String PokemonGaem) {
         BufferedImage img = null;
         try {
-            File file = new File(filename);
+            File file = new File(PokemonGaem);
             img = ImageIO.read(file);
         } catch (Exception e) {
             //if there is an error, print it
@@ -132,6 +132,7 @@ public class PokemonGaem extends JComponent {
             //movement of player directional
             {
             if(left)
+                
             {
               //x direction speed
                 x = x - speed;  
@@ -184,6 +185,7 @@ public class PokemonGaem extends JComponent {
             };
         }
     }
+        
 
     /**
      * @param args the command line arguments
@@ -210,8 +212,7 @@ public class PokemonGaem extends JComponent {
         // starts my game loop
         game.Pokemon();
     }
-    @Override
-    public void keyTyped(KeyEvent e) {
+        public void keyTyped(KeyEvent e) {
     }
 //fire the pokeball with space bar
 @Override
